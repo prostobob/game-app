@@ -1,0 +1,27 @@
+<div class="content">
+  <h1 class="title">Добро пожаловать в игру {{ name }}!!</h1>
+  <div>
+    <button (click)="game()" class="game_btn">
+      Начать игру
+    </button>
+  </div>
+  <div *ngIf="isGame">
+    <div class="content_game">
+      <div class="timer">{{ timer }}</div>
+    </div>
+    <div class="weapons">
+      <div class="item" *ngFor="let item of weapons; let i = index">
+        <button class="weapon_btn" (click)="makeChoice(item.name)">
+          <img [src]="item.path" alt="item.name" />
+        </button>
+      </div>
+    </div>
+    <div class="computer">
+      <h1>Computer</h1>
+      <button class="weapon_btn">
+        <img [src]="currentCompWeapon.path" />
+      </button>
+    </div>
+  </div>
+  <div class="result" *ngIf="resultText">{{ resultText }}</div>
+</div>
